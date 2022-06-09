@@ -34,20 +34,22 @@ class CassiniViewController: UIViewController, UISplitViewControllerDelegate
         }
     }
     
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func awakeFromNib() {
         splitViewController?.delegate = self
     }
     
-    func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController: UIViewController, onto primaryViewController: UIViewController) -> Bool
+    
+   /* func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController: UIViewController, onto primaryViewController: UIViewController) -> Bool
     {
-        if primaryViewController.contentViewController == self {
-            if let ivc = secondaryViewController.contentViewController as? ImageViewController , ivc.imageURL == nil {
+        if let ivc = secondaryViewController as? ImageViewController {
+            if ivc.imageURL == nil {
                 return true
             }
         }
         return false
+    }*/
+    public func splitViewController(_ svc: UISplitViewController, topColumnForCollapsingToProposedTopColumn proposedTopColumn: UISplitViewController.Column) -> UISplitViewController.Column {
+        return .primary
     }
 }
 
